@@ -768,13 +768,13 @@
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>BundlePath</key>
-				<string>VoodooI2CHID.kext</string>
+				<string>AlpsHID.kext</string>
 				<key>Comment</key>
-				<string>V1.2 | VoodooI2CHID.kext</string>
+				<string>V1.2 | AlpsHID.kext</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/VoodooI2CHID</string>
+				<string>Contents/MacOS/AlpsHID</string>
 				<key>MaxKernel</key>
 				<string></string>
 				<key>MinKernel</key>
@@ -1233,7 +1233,7 @@
 			<key>HibernateSkipsPicker</key>
 			<true/>
 			<key>HideAuxiliary</key>
-			<true/>
+			<false/>
 			<key>InstanceIdentifier</key>
 			<string></string>
 			<key>LauncherOption</key>
@@ -1535,7 +1535,7 @@
 			<key>GlobalConnect</key>
 			<false/>
 			<key>HideVerbose</key>
-			<true/>
+			<false/>
 			<key>JumpstartHotPlug</key>
 			<false/>
 			<key>MinDate</key>
