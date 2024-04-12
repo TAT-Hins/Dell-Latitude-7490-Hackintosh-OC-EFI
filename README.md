@@ -1,5 +1,10 @@
-# Dell-Latitude-7490-Hackintosh-macOS-OpenCore-EFI
+# Dell-Latitude-7490-Hackintosh-OpenCore-EFI
 
+- Readme translation: **[English]()|[中文文档]()**
+
+------
+
+# English
 
 ## Tested macOS Version
 
@@ -31,14 +36,16 @@
 
 ### BIOS Version
 
-- **1.36.0**
+- **[1.36.0](https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=rv03k&oscode=biosa&productcode=latitude-14-7490-laptop)**
 
-### Bootloader
+### Bootloader / OC EFI Version
 
-- **OpenCore 0.9.9**
+- **[OpenCore 0.9.9](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.9.9)**
 
-### SMBIOS
+### SMBIOS model
+
 - **MacBookPro15,2**
+- Generated PlatformInfo based on [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 
 
 ## BIOS Settings
@@ -52,59 +59,42 @@
 
 ## What's working
 
+- [x] iGPU displaying
 - [x] Battery Management
-
-- [x] Sleep/Wake
-
+- [x] Wake / Sleep (Lid & Fn + Insert)
+- [x] Screen backlight
 - [x] WiFi (2.4Ghz + 5Ghz)
-
-- [x] Bluetooth
-
+- [x] Bluetooth (Including Audio)
 - [x] Touchpad with Gestures + Trackpad + Buttons
-
+  - Enable **Touchpad click button (single for left click / double for right click)**:
+    `System Settings` → `Trackpad` → `Tap to click`
 - [x] Native hotkeys support with Fn keys (Volume Fn+F2/F3 and Screen Brightness Fn + F11/F12)
-
 - [x] USB-C charging
-
 
 ## What's not working
 
-- Fingerprint sensor
-
-- Smart card reader
-
-- Thunderbolt (needs to plug a device before boot)
-
+- Audio / Internal Speakers (needs to test **layout-id** for **`AppleALC`**)
+- Ethernet (needs to test IntelMausi.kext)
+- Thunderbolt (Known issues, not planning to fix currently)
 - Handoff, Airdrop & Sidecar (needs to replace a Broadcomm wireless adapter)
 
 
 ## What's not tested yet
 
+- [ ] 2-in-1 3.5mm headphone jack
 - [ ] CPU Speedstep
-
 - [ ] iGPU acceleration
-
-- [ ] Internal Speakers
-
 - [ ] Internal Microphone
-
-- [ ] Ethernet
-
 - [ ] HDMI + audio over HDMI
-
 - [ ] Web Camera
-
 - [ ] USB 3.0
-
-- [ ] MicroSD card reader 
-
+- [ ] MicroSD card reader (No SD card here)
 - [ ] USB-C DP-alt Mode
- 
 - [ ] USB-C Data transfer
-
 - [ ] FileVault 2
-
-- [ ] WWAN card
+- [ ] Fingerprint sensor (No hardware, SKU not included)
+- [ ] Smart card reader (No hardware, SKU not included)
+- [ ] WWAN card (No hardware, SKU not included)
 
 
 ## Special credits
@@ -116,7 +106,15 @@
 
 - Please **let me know ASAP** if there're any bugs that can be fixed
 
-### 
+------
+
+# 中文文档
+
+## 已测试版本
+
+- macOS Ventura 13.6.6
+
+## System Configuration
 
 | 型号 | 戴尔 Latitude 7490 |
 | --- | --- |
@@ -139,3 +137,71 @@
 | 雷电接口 | DisplayPort over USB Type-C(optional Thunderbolt 3 |
 | 读卡器 | Realtek RTS525A PCI Express Card Reader |
 | 键盘热键 | Dell WMI Hotkeys (Bus: 0x19) |
+
+### BIOS版本
+
+- **[1.36.0](https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=rv03k&oscode=biosa&productcode=latitude-14-7490-laptop)**
+
+### Bootloader / OC EFI版本
+
+- **[OpenCore 0.9.9](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.9.9)**
+
+### SMBIOS型号
+
+- **MacBookPro15,2**
+- 基于[GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)生成的PlatformInfo信息
+
+## BIOS设置
+
+- Boot mode（启动模式）: UEFI
+- Fast Boot（快速启动开关）: Thorough
+- SecureBoot（安全启动）: Disable
+- SATA Mode（SATA工作模式）: AHCI 
+- Intel SGX: Software Controlled
+
+## 哪些功能可以正常工作
+
+- [x] 核显显示
+- [x] 电源管理
+- [x] 系统唤醒 / 睡眠 (电脑盖开合 + 热键Fn+Insert)
+- [x] 屏幕背光
+- [x] WiFi (2.4Ghz + 5Ghz)
+- [x] 蓝牙（包括音频）
+- [x] 触控板 + 手势 + 小蓝点 + 左右按钮
+  - 启用触控板的**单指左键，双指右键**:
+    `设置` → `触控板` → `轻点来点按`
+- [x] 热键支持 (Fn+F2/F3调整音量，Fn+F11/F12或Fn+S/B调整屏幕亮度)
+- [x] USB-C充电
+
+## 哪些功能无法正常工作
+
+- 内置扬声器 (需要调试**layout-id**使**`AppleALC`**正常工作)
+- 有线网卡 (需要调试IntelMausi.kext)
+- 雷电接口 (已知bug，暂无修复计划)
+- Handoff（接力）, Airdrop（隔空投送） & Sidecar（随航） (需要替换成博通的无线网卡)
+
+## 哪些功能未经测试
+
+- [ ] 二合一3.5mm耳机孔
+- [ ] CPU频点步进
+- [ ] 核显加速
+- [ ] 内置麦克风
+- [ ] HDMI输出 + HDMI音频输出
+- [ ] 前置摄像头
+- [ ] USB 3.0
+- [ ] MicroSD读卡器 (手头没有SD卡)
+- [ ] USB-C DP-alt Mode
+- [ ] USB-C数据传输
+- [ ] FileVault 2
+- [ ] 指纹传感器 (无硬件，未标配)
+- [ ] 智能读卡器 (无硬件，未标配)
+- [ ] WWAN 4G卡 (无硬件，未标配)
+
+## 特别感谢
+
+- [CloverLeafBG/Dell-Latitude-7490-OC-Hackintosh](https://github.com/CloverLeafBG/Dell-Latitude-7490-OC-Hackintosh) **(主要参考)**
+
+## Enjoy!
+
+- 如何有任何bug（**最好是已知的修复手段**），欢迎**随时（尽快）联系我**，感激不尽
+
