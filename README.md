@@ -1,6 +1,6 @@
 # Dell-Latitude-7490-Hackintosh-OpenCore-EFI
 
-- Readme translation: **[English]()|[中文文档]()**
+- **[English]()|[中文文档]()**
 
 ------
 
@@ -45,55 +45,105 @@
 ### SMBIOS model
 
 - **MacBookPro15,2**
-- Generated PlatformInfo based on [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-
+- Generated **PlatformInfo** based on [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 
 ## BIOS Settings
 
-- Boot mode: UEFI
-- Fast Boot: Thorough
-- SecureBoot: Disable
-- SATA Mode: AHCI 
-- Intel SGX: Software Controlled
+- General
+  - Boot mode: **UEFI**
+  - CSM (Legacy Option) Mode: **Disabled**
+
+- System Configuration
+  - SATA Mode: **AHCI**
+  - USB Powershare: **Disabled**
+
+- Security
+  - TPM 2.0: **On**
+
+- Secure Boot: **Disabled**
+  - Secure Boot Mode: **Deployed Mode**
+
+- Intel Software Guard Extensions
+  - Intel SGX: **Software Controlled**
+
+- Performance
+  - Intel SpeedStep: **Enabled**
+  - C-states control: **Enabled**
+  - Intel TurboBoost: **Enabled**
+  - HT (HyperThread) control: **Enabled**
+
+- Power Management
+  - Intel Speed Shift Technology: **Enabled**
+
+- Post Behavior
+  - Fast Boot: **Thorough**
+
+- Virtualization support
+  - Virtualization: **Enabled**
+  - VT-d (VT for Direct I/O): **Enabled**
+
 
 
 ## What's working
 
 - [x] iGPU displaying
+
 - [x] Battery Management
+
 - [x] Wake / Sleep (Lid & Fn + Insert)
-- [x] Screen backlight
+
+- [x] Screen backlight control
+
 - [x] WiFi (2.4Ghz + 5Ghz)
-- [x] Bluetooth (Including Audio)
+
+- [x] Bluetooth (Including Audio, tested with **`HUAWEI FreeBuds 4`**)
+
 - [x] Touchpad with Gestures + Trackpad + Buttons
   - Enable **Touchpad click button (single for left click / double for right click)**:
-    `System Settings` → `Trackpad` → `Tap to click`
+    
+    > `System Settings` → `Trackpad` → `Tap to click` 
+  
 - [x] Native hotkeys support with Fn keys (Volume Fn+F2/F3 and Screen Brightness Fn + F11/F12)
+
+- [x] Web Camera
+
+- [x] Internal Speaker & Microphone （tested **layout-id=`17`**）
+
 - [x] USB-C charging
+
+- [x] USB-C Data transfer (Tested with **Portable Hard Drive** & **`Android File Transfer`**)
+
+- [x] USB 3.0 (Cost about 3s for copying a 1.0GB file, **over 300MB/s**)
+
+  - **`USB 3.1 Bus`** also noticeable in **System Report**
+
+- [x] USB-C accessory (Tested with **`HUAWEI USB-C Headset`**)
+
+- [x] MicroSD card reader
 
 ## What's not working
 
-- Audio / Internal Speakers (needs to test **layout-id** for **`AppleALC`**)
-- Ethernet (needs to test IntelMausi.kext)
-- Thunderbolt (Known issues, not planning to fix currently)
-- Handoff, Airdrop & Sidecar (needs to replace a Broadcomm wireless adapter)
+- Ethernet 
+  - No more crash, recognized correctly in system as **`Intel I219LM4 PCI Express Gigabit Ethernet`**
+  - The indicator lights go on for seconds, but then go off after connected to the router
+  - In the system it shows "Not connected"
+
+- 2-in-1 3.5mm headphone jack
+- Thunderbolt 
+  - Known issues → not planning to fix currently
+
+- Handoff, Airdrop & Sidecar 
+  - needs to replace a Broadcomm wireless adapter
 
 
 ## What's not tested yet
 
-- [ ] 2-in-1 3.5mm headphone jack
 - [ ] CPU Speedstep
 - [ ] iGPU acceleration
-- [ ] Internal Microphone
 - [ ] HDMI + audio over HDMI
-- [ ] Web Camera
-- [ ] USB 3.0
-- [ ] MicroSD card reader (No SD card here)
 - [ ] USB-C DP-alt Mode
-- [ ] USB-C Data transfer
 - [ ] FileVault 2
 - [ ] Fingerprint sensor (No hardware, SKU not included)
-- [ ] Smart card reader (No hardware, SKU not included)
 - [ ] WWAN card (No hardware, SKU not included)
 
 
@@ -153,48 +203,89 @@
 
 ## BIOS设置
 
-- Boot mode（启动模式）: UEFI
-- Fast Boot（快速启动开关）: Thorough
-- SecureBoot（安全启动）: Disable
-- SATA Mode（SATA工作模式）: AHCI 
-- Intel SGX: Software Controlled
+- General
+  - Boot mode: **UEFI**
+  - CSM (Legacy Option) Mode: **Disabled**
+- System Configuration
+  - SATA Mode: **AHCI**
+  - USB Powershare: **Disabled**
+- Security
+  - TPM 2.0: **On**
+- Secure Boot: **Disabled**
+  - Secure Boot Mode: **Deployed Mode**
+- Intel Software Guard Extensions
+  - Intel SGX: **Software Controlled**
+- Performance
+  - Intel SpeedStep: **Enabled**
+  - C-states control: **Enabled**
+  - Intel TurboBoost: **Enabled**
+  - HT (HyperThread) control: **Enabled**
+- Power Management
+  - Intel Speed Shift Technology: **Enabled**
+- Post Behavior
+  - Fast Boot: **Thorough**
+- Virtualization support
+  - Virtualization: **Enabled**
+  - VT-d (VT for Direct I/O): **Enabled**
 
 ## 哪些功能可以正常工作
 
 - [x] 核显显示
+
 - [x] 电源管理
+
 - [x] 系统唤醒 / 睡眠 (电脑盖开合 + 热键Fn+Insert)
-- [x] 屏幕背光
+
+- [x] 屏幕背光控制
+
 - [x] WiFi (2.4Ghz + 5Ghz)
-- [x] 蓝牙（包括音频）
-- [x] 触控板 + 手势 + 小蓝点 + 左右按钮
+
+- [x] 蓝牙（包括音频，已使用 **`HUAWEI FreeBuds 4`**进行测试)
+
+- [x] 触控板光标移动 + 手势 + 小蓝点光标移动 + 左右按钮
+
   - 启用触控板的**单指左键，双指右键**:
-    `设置` → `触控板` → `轻点来点按`
+
+    > `设置` → `触控板` → `轻点来点按` 
+
 - [x] 热键支持 (Fn+F2/F3调整音量，Fn+F11/F12或Fn+S/B调整屏幕亮度)
-- [x] USB-C充电
+
+- [x] 前置摄像头
+
+- [x] 内置扬声器、麦克风 （已测试，设置**layout-id=`17`**）
+
+- [x] USB-C 充电
+
+- [x] USB-C 数据传输 (已使用**移动硬盘**和**`Android File Transfer`**连接手机测试)
+
+- [x] USB 3.0 (复制1.0GB文件耗时3秒左右, **平均速度超过 300MB/s**)
+
+  - 接入符合条件的设备时，可以在**系统报告**中看到识别出**`USB 3.1 Bus`** 
+
+- [x] USB-C 附件 (已使用 **`HUAWEI USB-C 耳机`**进行测试)
+
+- [x] MicroSD卡读卡器
 
 ## 哪些功能无法正常工作
 
-- 内置扬声器 (需要调试**layout-id**使**`AppleALC`**正常工作)
-- 有线网卡 (需要调试IntelMausi.kext)
-- 雷电接口 (已知bug，暂无修复计划)
-- Handoff（接力）, Airdrop（隔空投送） & Sidecar（随航） (需要替换成博通的无线网卡)
+- 有线网卡 
+  - 卡死黑屏重启问题已解决, 系统正常识别网卡为 **`Intel I219LM4 PCI Express Gigabit Ethernet`**
+  - 网口指示灯在网线连接之后点亮几秒钟然后灭掉了
+  - 系统中显示有线网络“未连接”
+- 二合一3.5mm耳机孔
+- 雷电接口
+  - 已知bug，暂无修复计划
+- Handoff（接力）, Airdrop（隔空投送） & Sidecar（随航）
+  - 需要替换成博通的无线网卡
 
 ## 哪些功能未经测试
 
-- [ ] 二合一3.5mm耳机孔
-- [ ] CPU频点步进
+- [ ] CPU Speedstep技术
 - [ ] 核显加速
-- [ ] 内置麦克风
 - [ ] HDMI输出 + HDMI音频输出
-- [ ] 前置摄像头
-- [ ] USB 3.0
-- [ ] MicroSD读卡器 (手头没有SD卡)
-- [ ] USB-C DP-alt Mode
-- [ ] USB-C数据传输
+- [ ] USB-C DP视频输出
 - [ ] FileVault 2
 - [ ] 指纹传感器 (无硬件，未标配)
-- [ ] 智能读卡器 (无硬件，未标配)
 - [ ] WWAN 4G卡 (无硬件，未标配)
 
 ## 特别感谢
